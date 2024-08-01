@@ -1,6 +1,9 @@
 package com.adboardz.adboardz_inventoryservice.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +14,13 @@ import lombok.Setter;
 public class Inventory extends BaseModel{
     private String name;
     @OneToOne
+    @JsonBackReference
     private MediaType mediaType;
+    @Enumerated(EnumType.STRING)
+    @JsonBackReference
     private ScreenType screenType;
     @OneToOne
+    @JsonBackReference
     private Location location;
     private Double pricePerDay;
     private Boolean isAvailable;
@@ -67,7 +74,7 @@ public class Inventory extends BaseModel{
             return this;
         }
 
-        public InventoryBuilder setMediaAgency(Long ownerId) {
+        public InventoryBuilder setOwnerId(Long ownerId) {
             this.ownerId = ownerId;
             return this;
         }

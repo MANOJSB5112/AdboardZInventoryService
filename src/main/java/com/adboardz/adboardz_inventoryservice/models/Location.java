@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Location extends BaseModel{
-    private String name;
     private Double latitude;
     private Double longitude;
     private String address;
